@@ -1,0 +1,38 @@
+class MicropostsController < ApplicationController
+  
+  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user,   only: :destroy
+
+  def create
+    @micropost = current_user.microposts.build(params[:micropost])
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+      redirect_to root_path
+    else
+      
+      @feed_items = current_user.feed.paginate(page: params[:page] , :per_page => 10)
+      render 'static_pages/home'
+    end
+  end
+
+  def destroy   
+    @micropost.destroy
+    redirect_to root_path
+  end
+
+
+  
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_path, notice: "Please sign in."
+      end
+    end
+
+    private
+
+    def correct_user
+      @micropost = Micropost.find_by_id(params[:id])
+      redirect_to root_path unless current_user?(@micropost.user)
+    end
+end
