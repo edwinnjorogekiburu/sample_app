@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
 	def new
        if signed_in?
           redirect_to current_user
-          end 
+        end 
     end
 
 	def create
-	 user = User.find_by_email(params[:session][:email])
-  if user && user.authenticate(params[:session][:password])
+	 user = User.find_by_email(params[:email])
+  if user && user.authenticate(params[:password])
     # Sign the user in and redirect to the user's show page.
     sign_in user
     redirect_back_or user
