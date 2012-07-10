@@ -11,6 +11,11 @@
       <%= label_tag 'password' , 'Password' %>
       <%= password_field_tag 'password' %>
 
+      <%= check_box_tag 'remember_me' %>
+      <%= label_tag 'remember_me' , 'Remember Me' %>
+      <p>
+      <%= link_to "Reset Password" , reset_password_path %>
+      </p>
       <%= submit_tag "Sign In" , class: "btn btn-large btn-primary" %>
       <% end %>
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
