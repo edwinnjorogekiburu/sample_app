@@ -27,7 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       # Handle a successful save.
-      sign_in @user
+      UserMailer.registration_confirmation(@user).deliver
+      sign_in(@user,1)
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       # Handle a successful update.
       flash[:success] = "Update Successful"
-      sign_in @user
+      sign_in(@user,1)
       redirect_to @user
     else
       render 'edit'
