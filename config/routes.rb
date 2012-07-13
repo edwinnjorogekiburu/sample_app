@@ -12,12 +12,11 @@ SampleApp::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :searches
+  
 
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
-  match '/reset_password',  to: 'password_resets#reset_password'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
    

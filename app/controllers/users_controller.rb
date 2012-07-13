@@ -11,7 +11,12 @@ class UsersController < ApplicationController
   end
 
   def index
+  if params[:search]
+    @users = User.paginate(page: params[:page],:conditions => ['name LIKE?', "%#{params[:search]}%"])  
+    @count = @users.count
+  else
     @users = User.paginate(page: params[:page])
+  end
   end
 
   def new
