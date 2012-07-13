@@ -1,0 +1,20 @@
+<% provide(:title, 'Messages') %>
+<h1><%= yield(:title) %></h1>
+<h4>Inbox</h4>
+<ul class="messages">
+	<% for recieved_message in @recieved_messages %>
+	<li>
+      <%= recieved_message.message %>
+   </li>
+   <% end %>
+</ul>
+<h4>Sent Items</h4>
+<ul class="messages">
+	<% for sent_message in @sent_messages %>
+	<li>
+      <%= sent_message.subject %>
+      <%= sent_message.message %>
+      Sent <%= time_ago_in_words(sent_message.created_at) %> ago
+   </li>
+   <% end %>
+</ul>

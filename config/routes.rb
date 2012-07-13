@@ -12,6 +12,8 @@ SampleApp::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
+  resources :messages
+
   
 
   root to: 'static_pages#home'

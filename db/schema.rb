@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710112713) do
+ActiveRecord::Schema.define(:version => 20120713071749) do
+
+  create_table "messages", :force => true do |t|
+    t.integer  "reciepient_id"
+    t.integer  "sender_id"
+    t.string   "subject"
+    t.string   "message"
+    t.boolean  "read",          :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"

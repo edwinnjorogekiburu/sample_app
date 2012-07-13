@@ -15,7 +15,19 @@
       </section>
   </aside>
   <div class="span8">
-    <%= render  partial: 'follow_form' %>
+    <%= render  partial: 'shared/follow_form' %>
+<%= form_for(@message) do |f| %>
+<%= render 'shared/error_messages' , object: f.object %>
+
+      <%= f.hidden_field :reciepient_id , value: @user.id %>
+      <%= f.hidden_field :sender_id , value: current_user.id %>
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+      <%= f.label :message %>
+      <%= f.text_area :message , class: "message" %>
+      <%= f.submit "Send Message", class: "btn btn-large btn-primary" %>
+
+<% end %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">

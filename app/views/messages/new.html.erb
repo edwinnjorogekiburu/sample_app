@@ -1,0 +1,16 @@
+<% provide(:title, "Send a direct message to #{@reciepient.name}") %>
+<h5>Send a direct message to <%= @reciepient.name  %></h5>
+<p>
+</p>
+
+<%= form_for(@message) do |f| %>
+
+      <%= f.hidden_field :reciepient_id , value: @reciepient.id %>
+      <%= f.hidden_field :sender_id , value: current_user.id %>
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+      <%= f.label :message %>
+      <%= f.text_area :message %>
+   	  <%= f.submit "Send Message", class: "btn btn-large btn-primary" %>
+
+<% end %>

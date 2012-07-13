@@ -1,0 +1,7 @@
+<% for sent_message in @sent_messages  %>
+<li>
+      <%= sent_message.subject %>
+      <%= sent_message.message %>
+      Sent <%= time_ago_in_words(sent_message.created_at) %> ago
+</li>
+<% end %>
