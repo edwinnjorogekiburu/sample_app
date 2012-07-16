@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  has_many :recieved_messages , foreign_key: "reciepient_id" , class_name: "Message"
-  has_many :sent_messages , foreign_key: "sender_id" , class_name: "Message" 
+  has_many :recieved_messages , foreign_key: "reciepient_id" , class_name: "Message",:order => "id DESC"
+  has_many :sent_messages , foreign_key: "sender_id" , class_name: "Message" ,:order => "id DESC"
   has_secure_password
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

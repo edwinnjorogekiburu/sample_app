@@ -1,2 +1,26 @@
-<% provide(:title, 'Messages') %>
-<%= render :partial=>"sent_items" , :locals => { :sent_messages => @sent_messages }%>
+h2>Messages &raquo; Sent Items</h2>
+            <ul class="messages">
+            <% for sent_message in @sent_messages %>
+            <li>
+            <%= link_to gravatar_for(sent_message.reciepient), sent_message.reciepient %>
+            <div class="name">
+            <%= sent_message.reciepient.name %>
+            </div>
+            <span class="subject">
+            <%= sent_message.subject %> 
+            </span>
+            &raquo;
+            <span class="message_content">
+            <%= sent_message.message %>
+            </span>
+            <div class="timestamp">
+            Sent <%= time_ago_in_words(sent_message.created_at) %> ago
+            </div>
+            <span class="message_options">
+             <%= link_to "Send #{sent_message.reciepient.name} a message" , user_path(sent_message.reciepient) %>  |  
+             <%= link_to "Delete" , sent_message, method: :delete,
+                                           data: { confirm: "You sure?" }%>
+            </span>    
+            </li>
+            <% end %>
+            </ul>
