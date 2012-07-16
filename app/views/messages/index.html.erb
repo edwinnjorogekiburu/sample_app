@@ -1,50 +1,14 @@
 <% provide(:title, 'Messages') %>
-<h2><%= yield(:title) %></h2>
-<ul class="nav-tabs">
-<li class='active'>
-<p>Inbox</p>
-<ul class="messages">
-	<% for recieved_message in @recieved_messages %>
-	<li>
-      <%= link_to gravatar_for(recieved_message.sender), recieved_message.sender %>
-      <div class="name">
-      <%= recieved_message.sender.name %>
-      </div>
-      <span class="subject">
-      <%= recieved_message.subject %> 
-      </span>
-      &raquo;
-      <span class="message_content">
-      <%= recieved_message.message %>
-      </span>
-      <div class="timestamp">
-      Sent <%= time_ago_in_words(recieved_message.created_at) %> ago
-      </div>
-   </li>
-   <% end %>
+<ul class="nav nav-tabs" data-tabs="tabs">
+    <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
+    <li><a data-toggle="tab" href="#sent">Sent Items</a></li>
 </ul>
-</li>
-<li>
-<p>Sent Items</p>
-<ul class="messages">
-	<% for sent_message in @sent_messages %>
-	<li>
-      <%= link_to gravatar_for(sent_message.reciepient), sent_message.reciepient %>
-      <div class="name">
-      <%= sent_message.reciepient.name %>
-      </div>
-      <span class="subject">
-      <%= sent_message.subject %> 
-      </span>
-      &raquo;
-      <span class="message_content">
-      <%= sent_message.message %>
-      </span>
-      <div class="timestamp">
-      Sent <%= time_ago_in_words(sent_message.created_at) %> ago
-      </div>
-   </li>
-   <% end %>
-</ul>
-</li>
-</ul>
+<div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="inbox">
+            <%= render :partial=>"inbox" , :locals => { :recieved_messages => @recieved_messages }%>
+        </div>
+        <div class="tab-pane" id="sent">
+            <%= render :partial=>"sent_items" , :locals => { :sent_messages => @sent_messages }%>
+        </div>
+       
+</div>

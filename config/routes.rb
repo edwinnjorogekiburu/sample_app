@@ -12,9 +12,11 @@ SampleApp::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :messages
-
-  
+  resources :messages do
+    member do
+      get :sent , :inbox
+    end
+  end
 
   root to: 'static_pages#home'
 
