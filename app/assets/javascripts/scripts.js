@@ -15,5 +15,8 @@ $(document).ready(function(){
     });
 
 
+      $('#send_message').click(function(){
+      $('#message_form').slideDown();
+      });
 
  });
