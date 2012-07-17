@@ -1,3 +1,4 @@
+<div id='message_form'>
 <% unless current_user?(@user) %>
 <%= form_for(@message) do |f| %>
 <%= render 'shared/error_messages' , object: f.object %>
@@ -14,3 +15,4 @@
 end 
 end
 %>
+</div>

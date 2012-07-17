@@ -13,4 +13,10 @@ $(document).ready(function(){
       }
       $(this).next().show().text(140 - current +' characters left ');
     });
-});
+
+
+      $('#send_message').click(function(){
+      $('#message_form').slideDown();
+      });
+
+ });

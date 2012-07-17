@@ -16,7 +16,7 @@
   </aside>
   <div class="span8">
     <%= render  partial: 'shared/follow_form' %>
-    <%= render  partial: 'shared/message_form' , :locals => { :message => @message} %>
+    <%= render  partial: 'shared/message_form' %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
