@@ -10,8 +10,8 @@ ActionMailer::Base.smtp_settings = {
 	:address => "smtp.gmail.com",
 	:port => 587,
 	:domain => "www.aimsell.net",
-	:user_name => "edunjoroge@gmail.com",
-	:password => "07091986",
+	:user_name => "rails.app28@gmail.com",
+	:password => "french808",
 	:authentication => :plain,
 	:enable_starttlls_auto => true
 }

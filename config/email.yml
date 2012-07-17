@@ -2,13 +2,13 @@ development:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: edunjoroge@gmail.com
-  :password: 07091986
+  :user_name: rails.app28@gmail.com
+  :password: french808
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: edunjoroge@gmail.com
-  :password: 07091986
+  :user_name: rails.app28@gmail.com
+  :password: french808
   :enable_starttls_auto: true
