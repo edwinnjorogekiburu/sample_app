@@ -32,9 +32,8 @@ SampleApp::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
-  config.serve_static_assets = false
 
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Expands the lines which load the assets
   config.assets.debug = true

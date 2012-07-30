@@ -1,5 +1,8 @@
 class MessagesController < ApplicationController
 
+	before_filter :signed_in_user , only: [:index,:create,:destroy,:inbox,:sent]
+	before_filter :correct_user , only: [:inbox,:sent]
+
 	def index
         @recieved_messages = current_user.recieved_messages
         @sent_messages = current_user.sent_messages
@@ -34,5 +37,10 @@ class MessagesController < ApplicationController
 	def sent
         @sent_messages = current_user.sent_messages
 	end
+
+	 def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 
 end
