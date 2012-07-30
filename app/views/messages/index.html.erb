@@ -1,4 +1,17 @@
 <% provide(:title, 'Messages') %>
+
+<div class='row'>
+<aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+      </section>
+</aside>
+<div class='span8'>
 <ul class="nav nav-tabs" data-tabs="tabs">
     <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
     <li><a data-toggle="tab" href="#sent">Sent Items</a></li>
@@ -11,4 +24,6 @@
             <%= render :partial=>"sent_items" , :locals => { :sent_messages => @sent_messages }%>
         </div>
        
+</div>
+</div>
 </div>
