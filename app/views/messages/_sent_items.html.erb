@@ -1,4 +1,16 @@
+<div class='row'>
             <h2>Messages &raquo; Sent Items</h2>
+<aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+      </section>
+</aside>
+            <div class='span8'>    
             <ul class="messages">
             <% for sent_message in @sent_messages %>
             <li>
@@ -24,3 +36,5 @@
             </li>
             <% end %>
             </ul>
+        </div>
+        </div>

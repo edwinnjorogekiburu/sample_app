@@ -1,4 +1,16 @@
 <h2>Messages &raquo; Inbox</h2>
+<div class='row'>
+<aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+      </section>
+</aside>
+    <div class='span8'>
             <ul class="messages">
             <% for recieved_message in @recieved_messages %>
             <li>
@@ -24,3 +36,5 @@
             </li>
             <% end %>
             </ul>
+        </div>
+        </div>
