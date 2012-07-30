@@ -1,17 +1,5 @@
-<div class='row'>
-            <h2>Messages &raquo; Sent Items</h2>
-<aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-      <%= render 'message_menu' %>
-      </section>
-</aside>
-            <div class='span8'>    
+
+
             <ul class="messages">
             <% for sent_message in @sent_messages %>
             <li>
@@ -28,14 +16,9 @@
             </span>
             <div class="timestamp">
             Sent <%= time_ago_in_words(sent_message.created_at) %> ago
-            </div>
-            <span class="message_options">
-             <%= link_to "Send #{sent_message.reciepient.name} a message" , user_path(sent_message.reciepient) %>  |  
-             <%= link_to "Delete" , sent_message, method: :delete,
-                                           data: { confirm: "You sure?" }%>
-            </span>    
+            </div>   
             </li>
             <% end %>
             </ul>
-        </div>
-        </div>
+
+     

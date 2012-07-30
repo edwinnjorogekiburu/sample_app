@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
 	before_filter :correct_user , only: [:inbox,:sent]
 
 	def index
-        @recieved_messages = current_user.recieved_messages
-        @sent_messages = current_user.sent_messages
+        @recieved_messages = current_user.recieved_messages.paginate(page: params[:page] ,:per_page => 2)
+        @sent_messages = current_user.sent_messages.paginate(page: params[:page] ,:per_page => 2)
 	end
 
 	
@@ -31,11 +31,11 @@ class MessagesController < ApplicationController
 	end
 
 	def inbox
-        @recieved_messages = current_user.recieved_messages
+        @recieved_messages = current_user.recieved_messages.paginate(page: params[:page] ,:per_page => 2)
     end
 
 	def sent
-        @sent_messages = current_user.sent_messages
+        @sent_messages = current_user.sent_messages.paginate(page: params[:page] ,:per_page => 2)
 	end
 
 	 def correct_user
