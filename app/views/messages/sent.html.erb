@@ -1,6 +1,19 @@
 <% provide(:title, 'Sent Items') %>
-<h2><%= yield(:title) %></h2>
-<p>Sent Items</p>
+ 
+<div class='row'>      
+            <aside class="span4">
+                  <section>
+                    <%= render 'shared/user_info' %>
+                  </section>
+                  <section>
+                    <%= render 'shared/stats' %>
+                  </section>
+                  <section> 
+                  <%= render 'message_menu' %>
+                  </section>
+            </aside>
+<div class='span8'>
+<h2>Message &raquo; <%= yield(:title) %></h2>
 <ul class="messages">
 	<% for sent_message in @sent_messages %>
 	<li>
@@ -21,3 +34,5 @@
    </li>
    <% end %>
 </ul>
+</div>
+</div>
