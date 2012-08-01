@@ -276,3 +276,23 @@ aside {
 #message_form{
   display:none;
 }
+
+
+/* mixins more */
+
+.message_content{
+  @include border-radius(4px);
+  @include box-sizing;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding:9px;
+  margin:3px 0px 10px 53px;
+  background-color: whiteSmoke;
+}
+
+.unread{
+  font-weight:bold;background:#f1f1f1;
+}
+.table > thead{
+  border-top:1px solid #000000;
+  border-bottom:1px solid #000000;padding-top:0px;padding-bottom:0px;
+}

@@ -2,29 +2,39 @@
 
 <div class='row'>
 <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-                  <%= render 'message_menu' %>
-      </section>
+      <%= render "menu" %>
 </aside>
 <div class='span8'>
-<ul class="nav nav-tabs" data-tabs="tabs">
-    <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
-    <li><a data-toggle="tab" href="#sent">Sent Items</a></li>
-</ul>
-<div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="inbox">
-            <%= render :partial=>"inbox" , :locals => { :recieved_messages => @recieved_messages }%>
-        </div>
-        <div class="tab-pane" id="sent">
-            <%= render :partial=>"sent_items" , :locals => { :sent_messages => @sent_messages }%>
-        </div>
-       
-</div>
+  <h2>Inbox</h2>
+
+<%= will_paginate @recieved_messages %>
+<table class=' table zebra-striped'>
+<thead>
+<tr><th>Sender</th><th>Subject</th><th>Time</th> </tr>
+</thead>
+<tbody>
+  <% for recieved_message in @recieved_messages %> 
+            <tr 
+            <% if recieved_message.read %>
+              class="read"
+            <% else  %>
+              class="unread"
+            <% end %>
+            >
+            <td>
+            <%= recieved_message.sender.name %>
+            </td>
+            <td>
+            <%= link_to "#{recieved_message.subject}" , message_path(recieved_message) %>
+            </td>
+            <td class="timestamp">
+            Sent <%= time_ago_in_words(recieved_message.created_at) %> ago
+            </td>  
+            </tr>
+  <% end %>
+</tbody>
+</table>
+
+<%= will_paginate @recieved_messages %>
 </div>
 </div>

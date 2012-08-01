@@ -1,0 +1,26 @@
+<% provide(:title, @message.subject) %>
+<div class='row'>
+<aside class="span4">
+      <%= render "menu" %>
+</aside>
+<div class='span8'>
+	<p>
+	<%= link_to "Back to Inbox" , messages_path %>
+	</p>
+	<h2><%= @message.subject %></h2>
+	<hr/>
+	<h3><%= gravatar_for @message.sender %></h3>
+	<%= @message.sender.name %>
+	to <% if current_user?(@message.reciepient) %>
+	    me
+	<%	else %>
+		<%= @message.reciepient.name %>
+	<% end %>
+	<div class='time_stamp right'><%= time_ago_in_words(@message.created_at) %> ago</div>
+	<div style='clear:both;'></div>
+	<div class="message_content span7">
+		<%= @message.message %>
+	</div>
+	<%= link_to "Reply to #{@message.sender.name}" , user_path(@message.sender) , :id => "send_message" %> 
+</div>
+</div>

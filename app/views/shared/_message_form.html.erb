@@ -1,6 +1,6 @@
 <div id='message_form'>
 <% unless current_user?(@user) %>
-<%= form_for(@message) do |f| %>
+<%= form_for(message) do |f| %>
 <%= render 'shared/error_messages' , object: f.object %>
 
       <%= f.hidden_field :reciepient_id , value: @user.id %>
